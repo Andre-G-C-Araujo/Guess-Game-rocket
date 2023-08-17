@@ -2,10 +2,12 @@ const screen1 = document.querySelector(".screenone");
 const screen2 = document.querySelector(".screentwo");
 const btnTry = document.querySelector("#btnTry");
 const btnReset = document.querySelector("#btnReset");
+const pAlerta = document.querySelector(".alerta");
 let randomNumber = Math.round(Math.random() * 10);
 let xAttempts = 1;
 
 const handleTryClick = (event) => {
+  console.log(event);
   event.preventDefault();
   const inputNumber = document.querySelector("#inputNumber");
 
@@ -23,7 +25,7 @@ const handleTryClick = (event) => {
       ".screentwo h2"
     ).innerText = `Voce acertou em ${xAttempts} tentativas`;
   }
-
+  pAlerta.innerText = `Resposta erradas ${xAttempts}, tente denovo`;
   inputNumber.value = "";
   xAttempts++;
 };
@@ -32,6 +34,7 @@ const handleResetClick = () => {
   toggleScreen();
   randomNumber = Math.round(Math.random() * 10);
   xAttempts = 1;
+  pAlerta.innerText = "";
 };
 
 const toggleScreen = () => {
